@@ -29,7 +29,7 @@ namespace HistoricalTrails.Users
         [NotNull] string username,
         [NotNull] string password,
         [NotNull] string email,
-        [CanBeNull] byte gender,
+        [NotNull] byte gender,
         [NotNull] short age,
         [NotNull] string phoneNumber,
         DateTime registrationDate,
