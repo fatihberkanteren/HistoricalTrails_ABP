@@ -26,6 +26,11 @@
     "Permission:HistoricalPlaces.Create": "Creating new Places",
     "Permission:HistoricalPlaces.Edit": "Editing the Places",
     "Permission:HistoricalPlaces.Delete": "Deleting the Places",
-    "HistoricalTrails:00001": "There is already an customer with the same name: {name}"
+    "HistoricalTrails:00001": "There is already an customer with the same name: {name}",
+    "Permission:Customers": "Customer Management",
+    "Permission:Customers.Create": "Creating new Customers",
+    "Permission:Customers.Edit": "Editing the Customers",
+    "Permission:Customers.Delete": "Deleting the Customers"
+
   }
 }

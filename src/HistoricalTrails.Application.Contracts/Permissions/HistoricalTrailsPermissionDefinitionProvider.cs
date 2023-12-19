@@ -8,12 +8,17 @@ public class HistoricalTrailsPermissionDefinitionProvider : PermissionDefinition
 {
     public override void Define(IPermissionDefinitionContext context)
     {
-        var historicalTrailsGroup = context.AddGroup(HistoricalTrailsPermissions.GroupName, L("Permission:BookStore"));
+        var historicalTrailsGroup = context.AddGroup(HistoricalTrailsPermissions.GroupName, L("Permission:HistoricalTrails"));
 
-        var booksPermission = historicalTrailsGroup.AddPermission(HistoricalTrailsPermissions.HistoricalPlaces.Default, L("Permission:Books"));
-        booksPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Create, L("Permission:Books.Create"));
-        booksPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Edit, L("Permission:Books.Edit"));
-        booksPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Delete, L("Permission:Books.Delete"));
+        var historicalPlacesPermission = historicalTrailsGroup.AddPermission(HistoricalTrailsPermissions.HistoricalPlaces.Default, L("Permission:HistoricalPlaces"));
+        historicalPlacesPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Create, L("Permission:HistoricalPlaces.Create"));
+        historicalPlacesPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Edit, L("Permission:HistoricalPlaces.Edit"));
+        historicalPlacesPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Delete, L("Permission:HistoricalPlaces.Delete"));
+
+        var customersPermission = historicalTrailsGroup.AddPermission(HistoricalTrailsPermissions.Customers.Default, L("Permission:Customers"));
+        customersPermission.AddChild(HistoricalTrailsPermissions.Customers.Create, L("Permission:Customers.Create"));
+        customersPermission.AddChild(HistoricalTrailsPermissions.Customers.Edit, L("Permission:Customers.Edit"));
+        customersPermission.AddChild(HistoricalTrailsPermissions.Customers.Delete, L("Permission:Customers.Delete"));
     }
 
     private static LocalizableString L(string name)

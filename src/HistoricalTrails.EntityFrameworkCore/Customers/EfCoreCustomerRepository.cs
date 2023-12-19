@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace Acme.BookStore.Authors;
+namespace HistoricalTrails.Customers;
 
 public class EfCoreCustomerRepository
     : EfCoreRepository<HistoricalTrailsDbContext, Customer, Guid>,
@@ -37,7 +37,7 @@ public class EfCoreCustomerRepository
         return await dbSet
             .WhereIf(
                 !filter.IsNullOrWhiteSpace(),
-                customer => customer.Name.Contains(filter)
+                author => author.Name.Contains(filter)
                 )
             .OrderBy(sorting)
             .Skip(skipCount)
