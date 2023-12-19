@@ -18,6 +18,14 @@
     "ImageUrl": "ImageUrl",
     "CreationTime": "Creation time",
     "AreYouSure": "Are you sure?",
-    "AreYouSureToDelete": "Are you sure you want to delete this item?"
+    "AreYouSureToDelete": "Are you sure you want to delete this item?",
+    "HistoricalPlaceDeletionConfirmationMessage": "Are you sure to delete the Historical Place '{0}'?",
+    "SuccessfullyDeleted": "Successfully deleted!",
+    "Permission:HistoricalTrails": "Historical Place Store",
+    "Permission:HistoricalPlaces": "Historical Place Management",
+    "Permission:HistoricalPlaces.Create": "Creating new Places",
+    "Permission:HistoricalPlaces.Edit": "Editing the Places",
+    "Permission:HistoricalPlaces.Delete": "Deleting the Places",
+    "HistoricalTrails:00001": "There is already an customer with the same name: {name}"
   }
 }

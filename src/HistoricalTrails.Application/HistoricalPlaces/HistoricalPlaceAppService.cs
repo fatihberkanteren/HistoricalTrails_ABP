@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HistoricalTrails.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,15 @@ namespace HistoricalTrails.HistoricalPlaces
         Guid, //Primary key of the HistoricalPlace entity
         PagedAndSortedResultRequestDto, //Used for paging/sorting
         CreateUpdateHistoricalPlaceDto>, //Used to create/update a HistoricalPlace
-    IHistoricalPlaceAppService //implement the IHistoricalPlaceAppService
+    IHistoricalTrailsAppService //implement the IHistoricalPlaceAppService
     {
         public HistoricalPlaceAppService(IRepository<HistoricalPlace, Guid> repository) : base(repository)
         {
+            GetPolicyName = HistoricalTrailsPermissions.HistoricalPlaces.Default;
+            GetListPolicyName = HistoricalTrailsPermissions.HistoricalPlaces.Default;
+            CreatePolicyName = HistoricalTrailsPermissions.HistoricalPlaces.Create;
+            UpdatePolicyName = HistoricalTrailsPermissions.HistoricalPlaces.Edit;
+            DeletePolicyName = HistoricalTrailsPermissions.HistoricalPlaces.Delete;
         }
     }
 }

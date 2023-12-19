@@ -6,7 +6,7 @@ using Volo.Abp.Application.Services;
 
 namespace HistoricalTrails.HistoricalPlaces
 {
-    public interface IHistoricalPlaceAppService : ICrudAppService< //Defines CRUD methods
+    public interface IHistoricalTrailsAppService : ICrudAppService< //Defines CRUD methods
         HistoricalPlaceDto, //Used to show books
         Guid, //Primary key of the book entity
         PagedAndSortedResultRequestDto, //Used for paging/sorting

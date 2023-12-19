@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using HistoricalTrails.Localization;
 using HistoricalTrails.MultiTenancy;
+using HistoricalTrails.Permissions;
+using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TenantManagement.Web.Navigation;
@@ -47,16 +49,16 @@ public class HistoricalTrailsMenuContributor : IMenuContributor
         administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 3);
 
         context.Menu.AddItem(
-    new ApplicationMenuItem(
-        "HistoricalTrails",
-        l["Menu:HistoricalTrails"],
-        icon: "fa fa-book"
+        new ApplicationMenuItem(
+            "HistoricalTrails",
+            l["Menu:HistoricalTrails"],
+            icon: "fa fa-book"
     ).AddItem(
         new ApplicationMenuItem(
             "HistoricalTrails.HistoricalPlaces",
             l["Menu:HistoricalPlaces"],
             url: "/HistoricalPlaces"
-        )
+        ).RequirePermissions(HistoricalTrailsPermissions.HistoricalPlaces.Default)
     )
 );
 

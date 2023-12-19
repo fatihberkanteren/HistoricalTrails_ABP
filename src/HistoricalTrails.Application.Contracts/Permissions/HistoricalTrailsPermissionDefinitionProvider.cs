@@ -8,9 +8,12 @@ public class HistoricalTrailsPermissionDefinitionProvider : PermissionDefinition
 {
     public override void Define(IPermissionDefinitionContext context)
     {
-        var myGroup = context.AddGroup(HistoricalTrailsPermissions.GroupName);
-        //Define your own permissions here. Example:
-        //myGroup.AddPermission(HistoricalTrailsPermissions.MyPermission1, L("Permission:MyPermission1"));
+        var historicalTrailsGroup = context.AddGroup(HistoricalTrailsPermissions.GroupName, L("Permission:BookStore"));
+
+        var booksPermission = historicalTrailsGroup.AddPermission(HistoricalTrailsPermissions.HistoricalPlaces.Default, L("Permission:Books"));
+        booksPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Create, L("Permission:Books.Create"));
+        booksPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Edit, L("Permission:Books.Edit"));
+        booksPermission.AddChild(HistoricalTrailsPermissions.HistoricalPlaces.Delete, L("Permission:Books.Delete"));
     }
 
     private static LocalizableString L(string name)

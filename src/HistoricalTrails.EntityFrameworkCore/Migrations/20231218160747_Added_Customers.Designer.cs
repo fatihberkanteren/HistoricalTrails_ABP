@@ -3,6 +3,7 @@ using System;
 using HistoricalTrails.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -11,9 +12,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace HistoricalTrails.Migrations
 {
     [DbContext(typeof(HistoricalTrailsDbContext))]
-    partial class HistoricalTrailsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231218160747_Added_Customers")]
+    partial class AddedCustomers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HistoricalTrails.HistoricalPlaces;
 
 namespace HistoricalTrails.Web;
 
@@ -6,6 +7,6 @@ public class HistoricalTrailsWebAutoMapperProfile : Profile
 {
     public HistoricalTrailsWebAutoMapperProfile()
     {
-        //Define your AutoMapper configuration here for the Web project.
+        CreateMap<HistoricalPlaceDto, CreateUpdateHistoricalPlaceDto>();
     }
 }

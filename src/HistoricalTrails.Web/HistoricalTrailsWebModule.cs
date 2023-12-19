@@ -37,6 +37,8 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using HistoricalTrails.Permissions;
 
 namespace HistoricalTrails.Web;
 
@@ -93,6 +95,14 @@ public class HistoricalTrailsWebModule : AbpModule
         ConfigureNavigationServices();
         ConfigureAutoApiControllers();
         ConfigureSwaggerServices(context.Services);
+
+        Configure<RazorPagesOptions>(options =>
+        {
+            options.Conventions.AuthorizePage("/HistoricalPlaces/Index", HistoricalTrailsPermissions.HistoricalPlaces.Default);
+            options.Conventions.AuthorizePage("/HistoricalPlaces/CreateModal", HistoricalTrailsPermissions.HistoricalPlaces.Create);
+            options.Conventions.AuthorizePage("/HistoricalPlaces/EditModal", HistoricalTrailsPermissions.HistoricalPlaces.Edit);
+        });
+
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)
