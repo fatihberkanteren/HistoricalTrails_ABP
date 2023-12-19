@@ -59,10 +59,14 @@ public class HistoricalTrailsMenuContributor : IMenuContributor
             l["Menu:HistoricalPlaces"],
             url: "/HistoricalPlaces"
         ).RequirePermissions(HistoricalTrailsPermissions.HistoricalPlaces.Default)
+    ).AddItem( // ADDED THE NEW "AUTHORS" MENU ITEM UNDER THE "BOOK STORE" MENU
+        new ApplicationMenuItem(
+            "HistoricalTrails.Customers",
+            l["Menu:Customers"],
+            url: "/Customers"
+        ).RequirePermissions(HistoricalTrailsPermissions.Customers.Default)
     )
 );
-
-
         return Task.CompletedTask;
     }
 }

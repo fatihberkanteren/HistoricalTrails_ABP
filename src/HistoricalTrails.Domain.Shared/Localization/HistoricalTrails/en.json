@@ -30,7 +30,12 @@
     "Permission:Customers": "Customer Management",
     "Permission:Customers.Create": "Creating new Customers",
     "Permission:Customers.Edit": "Editing the Customers",
-    "Permission:Customers.Delete": "Deleting the Customers"
+    "Permission:Customers.Delete": "Deleting the Customers",
+    "Menu:Customers": "Customers",
+    "Customers": "Customers",
+    "CustomerDeletionConfirmationMessage": "Are you sure to delete the Customer '{0}'?",
+    "Surname": "Surname",
+    "NewCustomer": "New customer"
 
   }
 }
