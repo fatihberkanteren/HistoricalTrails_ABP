@@ -12,7 +12,7 @@ namespace HistoricalTrails.Users
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public byte Gender { get; set; }
+        public string Gender { get; set; }
         public short Age { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime RegistrationDate { get; set; }
@@ -29,7 +29,7 @@ namespace HistoricalTrails.Users
         [NotNull] string username,
         [NotNull] string password,
         [NotNull] string email,
-        [NotNull] byte gender,
+        [NotNull] string gender,
         [NotNull] short age,
         [NotNull] string phoneNumber,
         DateTime registrationDate,

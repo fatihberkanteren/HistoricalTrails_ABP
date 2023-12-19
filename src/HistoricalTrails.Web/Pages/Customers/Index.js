@@ -10,7 +10,7 @@
             order: [[1, "asc"]],
             searching: false,
             scrollX: true,
-            ajax: abp.libs.datatables.createAjax(historcalTrails.customers.customer.getList),
+            ajax: abp.libs.datatables.createAjax(historicalTrails.customers.customer.getList),
             columnDefs: [
                 {
                     title: l('Actions'),
@@ -36,7 +36,7 @@
                                         );
                                     },
                                     action: function (data) {
-                                        acme.bookStore.authors.author
+                                        historicalTrails.customers.customer
                                             .delete(data.record.id)
                                             .then(function () {
                                                 abp.notify.info(
@@ -54,8 +54,8 @@
                     data: "name"
                 },
                 {
-                    title: l('Surname'),
-                    data: "surname",
+                    title: l('BirthDate'),
+                    data: "birthDate",
                     render: function (data) {
                         return luxon
                             .DateTime
@@ -76,7 +76,7 @@
         dataTable.ajax.reload();
     });
 
-    $('#NewAuthorButton').click(function (e) {
+    $('#NewCustomerButton').click(function (e) {
         e.preventDefault();
         createModal.open();
     });

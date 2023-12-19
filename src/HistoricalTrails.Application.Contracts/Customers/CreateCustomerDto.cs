@@ -18,7 +18,7 @@ public class CreateCustomerDto
     [Required]
     public string Email { get; set; }
     [Required]
-    public byte Gender { get; set; }
+    public string Gender { get; set; }
     [Required]
     public short Age { get; set; }
     [Required]
