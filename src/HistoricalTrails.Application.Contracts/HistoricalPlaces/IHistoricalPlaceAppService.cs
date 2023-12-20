@@ -10,8 +10,7 @@ namespace HistoricalTrails.HistoricalPlaces
         HistoricalPlaceDto, //Used to show books
         Guid, //Primary key of the book entity
         PagedAndSortedResultRequestDto, //Used for paging/sorting
-        CreateUpdateHistoricalPlaceDto> //Used to create/update a book
-
+        CreateUpdateHistoricalPlaceDto> //Used to create/update a 
     {
     }
 }
