@@ -1,5 +1,8 @@
 ﻿using HistoricalTrails.Blogs;
+using HistoricalTrails.Categories;
+using HistoricalTrails.Events;
 using HistoricalTrails.HistoricalPlaces;
+using HistoricalTrails.Newscasts;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -29,6 +32,12 @@ public class HistoricalTrailsDbContext :
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<HistoricalPlace> HistoricalPlaces { get; set; }
     public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Event> Events { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Newscast> Newscasts { get; set; }
+
+
+
 
     #region Entities from the modules
 
@@ -95,6 +104,26 @@ public class HistoricalTrailsDbContext :
             b.ConfigureByConvention(); //auto configure for the base class props
             b.Property(x => x.Title).IsRequired().HasMaxLength(128);
         });
-
+        builder.Entity<Event>(b =>
+        {
+            b.ToTable(HistoricalTrailsConsts.DbTablePrefix + "Events",
+                HistoricalTrailsConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+        });
+        builder.Entity<Category>(b =>
+        {
+            b.ToTable(HistoricalTrailsConsts.DbTablePrefix + "Categories",
+                HistoricalTrailsConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+        });
+        builder.Entity<Newscast>(b =>
+        {
+            b.ToTable(HistoricalTrailsConsts.DbTablePrefix + "Newscasts",
+                HistoricalTrailsConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(x => x.Title).IsRequired().HasMaxLength(128);
+        });
     }
 }
