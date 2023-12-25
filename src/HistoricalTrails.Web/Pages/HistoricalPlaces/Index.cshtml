@@ -1,34 +1,31 @@
 ﻿@page
 @using HistoricalTrails.Localization
-@using HistoricalTrails.Permissions
 @using HistoricalTrails.Web.Pages.HistoricalPlaces
-@using Microsoft.AspNetCore.Authorization
 @using Microsoft.Extensions.Localization
 @model IndexModel
 @inject IStringLocalizer<HistoricalTrailsResource> L
-@inject IAuthorizationService AuthorizationService
 @section scripts
 {
     <abp-script src="/Pages/HistoricalPlaces/Index.js" />
 }
 <abp-card>
     <abp-card-header>
-        <abp-row>
-            <abp-column size-md="_6">
-                <abp-card-title>@L["Historical Places"]</abp-card-title>
-            </abp-column>
-            <abp-column size-md="_6" class="text-end">
-                @if (await AuthorizationService.IsGrantedAsync(HistoricalTrailsPermissions.HistoricalPlaces.Create))
-                {
+        <abp-card-header>
+            <abp-row>
+                <abp-column size-md="_6">
+                    <abp-card-title>@L["HistoricalPlaces"]</abp-card-title>
+                </abp-column>
+                <abp-column size-md="_6" class="text-end">
                     <abp-button id="NewHistoricalPlaceButton"
-                                text="@L["New Historical Place"].Value"
+                                text="@L["NewHistoricalPlace"].Value"
                                 icon="plus"
                                 button-type="Primary" />
-                }
-            </abp-column>
-        </abp-row>
+                </abp-column>
+            </abp-row>
+        </abp-card-header>
+
     </abp-card-header>
     <abp-card-body>
-        <abp-table striped-rows="true" id="HistorcalPlacesTable"></abp-table>
+        <abp-table striped-rows="true" id="HistoricalPlacesTable"></abp-table>
     </abp-card-body>
 </abp-card>

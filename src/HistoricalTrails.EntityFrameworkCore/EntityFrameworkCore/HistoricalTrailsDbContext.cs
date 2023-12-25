@@ -1,4 +1,5 @@
-﻿using HistoricalTrails.HistoricalPlaces;
+﻿using HistoricalTrails.Blogs;
+using HistoricalTrails.HistoricalPlaces;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -27,7 +28,7 @@ public class HistoricalTrailsDbContext :
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<HistoricalPlace> HistoricalPlaces { get; set; }
-
+    public DbSet<Blog> Blogs { get; set; }
 
     #region Entities from the modules
 
@@ -82,12 +83,18 @@ public class HistoricalTrailsDbContext :
 
         builder.Entity<HistoricalPlace>(b =>
         {
-            b.ToTable(HistoricalTrailsConsts.DbTablePrefix + "Places",
+            b.ToTable(HistoricalTrailsConsts.DbTablePrefix + "HistoricalPlaces",
                 HistoricalTrailsConsts.DbSchema);
             b.ConfigureByConvention(); //auto configure for the base class props
             b.Property(x => x.Name).IsRequired().HasMaxLength(128);
         });
+        builder.Entity<Blog>(b =>
+        {
+            b.ToTable(HistoricalTrailsConsts.DbTablePrefix + "Blogs",
+                HistoricalTrailsConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(x => x.Title).IsRequired().HasMaxLength(128);
+        });
 
-        
     }
 }

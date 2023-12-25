@@ -12,7 +12,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace HistoricalTrails.Migrations
 {
     [DbContext(typeof(HistoricalTrailsDbContext))]
-    [Migration("20231217180940_Created_HistoricalPlace_Entity")]
+    [Migration("20231225083547_Created_HistoricalPlace_Entity")]
     partial class CreatedHistoricalPlaceEntity
     {
         /// <inheritdoc />
@@ -76,7 +76,7 @@ namespace HistoricalTrails.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppPlaces", (string)null);
+                    b.ToTable("AppHistoricalPlaces", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

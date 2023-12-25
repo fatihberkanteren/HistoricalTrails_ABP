@@ -10,11 +10,11 @@ namespace HistoricalTrails.Web.Pages.HistoricalPlaces
         [BindProperty]
         public CreateUpdateHistoricalPlaceDto HistoricalPlace { get; set; }
 
-        private readonly HistoricalPlaceAppService _historicalPlaceAppService;
+        private readonly IHistoricalPlacesAppService _historicalPlaceAppService;
 
-        public CreateModalModel(HistoricalPlaceAppService historicalPlaceAppService)
+        public CreateModalModel(IHistoricalPlacesAppService historicalPlaceAppService)
         {
-            _historicalPlaceAppService = _historicalPlaceAppService;
+            _historicalPlaceAppService = historicalPlaceAppService;
         }
 
         public void OnGet()

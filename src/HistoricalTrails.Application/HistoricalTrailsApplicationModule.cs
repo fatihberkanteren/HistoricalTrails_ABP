@@ -1,4 +1,6 @@
-﻿using Volo.Abp.Account;
+﻿using HistoricalTrails.HistoricalPlaces;
+using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Account;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -27,5 +29,7 @@ public class HistoricalTrailsApplicationModule : AbpModule
         {
             options.AddMaps<HistoricalTrailsApplicationModule>();
         });
+        //context.Services.AddScoped<IHistoricalPlacesAppService>(
+        //   sp => sp.GetRequiredService<HistoricalPlacesAppService>()
     }
 }

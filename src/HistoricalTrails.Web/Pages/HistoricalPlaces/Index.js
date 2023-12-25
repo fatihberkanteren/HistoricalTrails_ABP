@@ -1,16 +1,17 @@
-﻿$(function () {
+﻿
+$(function () {
     var l = abp.localization.getResource('HistoricalTrails');
     var createModal = new abp.ModalManager(abp.appPath + 'HistoricalPlaces/CreateModal');
     var editModal = new abp.ModalManager(abp.appPath + 'HistoricalPlaces/EditModal');
 
-    var dataTable = $('#HistorcalPlacesTable').DataTable(
+    var dataTable = $('#HistoricalPlacesTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
             serverSide: true,
             paging: true,
             order: [[1, "asc"]],
             searching: false,
             scrollX: true,
-            ajax: abp.libs.datatables.createAjax(historicalTrails.historicalPlaces.historicalPlace.getList),
+            ajax: abp.libs.datatables.createAjax(historicalTrails.historicalPlaces.historicalPlaces.getList),
             columnDefs: [
                 {
                     title: l('Actions'),
@@ -19,7 +20,6 @@
                             [
                                 {
                                     text: l('Edit'),
-                                    visible: abp.auth.isGranted('HistoricalTrails.HistoricalPlaces.Edit'),
                                     action: function (data) {
                                         editModal.open({ id: data.record.id });
                                     }
@@ -27,14 +27,18 @@
                                 {
                                     text: l('Delete'),
                                     confirmMessage: function (data) {
-                                        return l('HistoricalPlaceDeletionConfirmationMessage', data.record.name);
+                                        return l(
+                                            'HistoricalPlaceDeletionConfirmationMessage',
+                                            data.record.name
+                                        );
                                     },
-                                    visible: abp.auth.isGranted('HistoricalTrails.HistoricalPlaces.Delete'),
                                     action: function (data) {
-                                        historicalTrails.historicalPlaces.historicalPlace
+                                        historicalTrails.historicalPlaces.historicalPlaces
                                             .delete(data.record.id)
                                             .then(function () {
-                                                abp.notify.info(l('SuccessfullyDeleted'));
+                                                abp.notify.info(
+                                                    l('SuccessfullyDeleted')
+                                                );
                                                 dataTable.ajax.reload();
                                             });
                                     }
@@ -47,11 +51,11 @@
                     data: "name"
                 },
                 {
-                    title: l('Tarihi'),
+                    title: l('History'),
                     data: "history"
                 },
                 {
-                    title: l('Image Url'),
+                    title: l('ImageUrl'),
                     data: "imageUrl"
                 },
                 {
@@ -65,13 +69,12 @@
                     }
                 },
                 {
-                    title: l('Açıklama'),
+                    title: l('Description'),
                     data: "description"
-                },
+                }
             ]
         })
     );
-    var createModal = new abp.ModalManager(abp.appPath + 'HistoricalPlaces/CreateModal');
 
     createModal.onResult(function () {
         dataTable.ajax.reload();
@@ -85,5 +88,4 @@
         e.preventDefault();
         createModal.open();
     });
-
 });

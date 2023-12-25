@@ -1,40 +1,37 @@
-using HistoricalTrails.HistoricalPlaces;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Threading.Tasks;
+using HistoricalTrails.HistoricalPlaces;
+using AutoMapper.Internal.Mappers;
+using Microsoft.AspNetCore.Mvc;
+using HistoricalTrails.Web.Pages;
 
-namespace HistoricalTrails.Web.Pages.HistoricalPlaces
+namespace HistoricalTrails.Web.Pages.HistoricalPlaces;
+
+public class EditModalModel : HistoricalTrailsPageModel
 {
-    public class EditModalModel : HistoricalTrailsPageModel
+    [HiddenInput]
+    [BindProperty(SupportsGet = true)]
+    public Guid Id { get; set; }
+
+    [BindProperty]
+    public CreateUpdateHistoricalPlaceDto HistoricalPlace { get; set; }
+
+    private readonly IHistoricalPlacesAppService _historicalPlaceAppService;
+
+    public EditModalModel(IHistoricalPlacesAppService historicalPlaceAppService)
     {
-        [HiddenInput]
-        [BindProperty(SupportsGet = true)]
-        public Guid Id { get; set; }
+        _historicalPlaceAppService = historicalPlaceAppService;
+    }
 
-        [BindProperty]
-        public CreateUpdateHistoricalPlaceDto HistoricalPlace { get; set; }
+    public async Task OnGetAsync()
+    {
+        var historicalPlace = await _historicalPlaceAppService.GetAsync(Id);
+        HistoricalPlace = ObjectMapper.Map<HistoricalPlaceDto, CreateUpdateHistoricalPlaceDto>(historicalPlace);
+    }
 
-        private readonly IHistoricalTrailsAppService _historicalPlaceAppService;
-
-        public EditModalModel(IHistoricalTrailsAppService historicalPlaceAppService)
-        {
-            _historicalPlaceAppService = historicalPlaceAppService;
-        }
-        public async Task OnGetAsync()
-        {
-            var historicalPlaceDto = await _historicalPlaceAppService.GetAsync(Id);
-            HistoricalPlace = ObjectMapper.Map<HistoricalPlaceDto, CreateUpdateHistoricalPlaceDto>(historicalPlaceDto);
-        }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            await _historicalPlaceAppService.UpdateAsync(Id, HistoricalPlace);
-            return NoContent();
-        }
-
-        public void OnGet()
-        {
-        }
+    public async Task<IActionResult> OnPostAsync()
+    {
+        await _historicalPlaceAppService.UpdateAsync(Id, HistoricalPlace);
+        return NoContent();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using HistoricalTrails.HistoricalPlaces;
-namespace HistoricalTrails;
 
+namespace HistoricalTrails;
 public class HistoricalTrailsApplicationAutoMapperProfile : Profile
 {
     public HistoricalTrailsApplicationAutoMapperProfile()

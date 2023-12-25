@@ -12,11 +12,11 @@ namespace HistoricalTrails.HistoricalPlaces
 {
     public class HistoricalPlaceAppService_Test : HistoricalTrailsApplicationTestBase
     {
-        private readonly IHistoricalTrailsAppService _historicalPlaceAppService;
+        private readonly IHistoricalPlacesAppService _historicalPlaceAppService;
 
         public HistoricalPlaceAppService_Test()
         {
-            _historicalPlaceAppService = GetRequiredService<IHistoricalTrailsAppService>();
+            _historicalPlaceAppService = GetRequiredService<IHistoricalPlacesAppService>();
         }
 
         [Fact]
